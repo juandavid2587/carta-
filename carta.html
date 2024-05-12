@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de la Madre</title>
+    <style>
+        @font-face {
+            font-family: 'Lucida Handwriting';
+            src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        }
+
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative; /* Agregado para el confeti */
+        }
+        .container {
+            display: flex;
+            flex-direction: row; /* Dirección de fila */
+            width: 90%; /* Ajuste del ancho para dispositivos móviles */
+            max-width: 800px; /* Máximo ancho */
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        .container:hover {
+            transform: rotateY(-10deg);
+        }
+        .image-container {
+            width: 50%; /* Ancho para la imagen */
+            padding: 20px;
+            position: relative; /* Posicionamiento */
+        }
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            animation: heartbeat 1s infinite ease-in-out; /* Animación */
+        }
+        .text-container {
+            width: 50%; /* Ancho para el texto */
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f8f8; /* Color de fondo */
+            border-radius: 0 0 30px 30px; /* Borde inferior */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 36px; /* Tamaño del título */
+            color: #ff69b4;
+            margin-bottom: 20px;
+            font-family: 'Lucida Handwriting', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: italic;
+            animation: heartbeat 1s infinite ease-in-out; /* Animación */
+        }
+        p {
+            font-size: 15px; /* Tamaño del texto */
+            color: #333;
+            line-height: 1.8; /* Espacio entre líneas */
+            margin-bottom: 20px; /* Espacio entre párrafos */
+            max-width: 90%; /* Ancho máximo para evitar que el texto sea demasiado largo */
+            font-family: 'Lucida Handwriting', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: italic;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Estilos del confeti */
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: confetti-fall linear infinite;
+            animation-duration: 3s; /* Duración de la animación */
+        }
+        
+        /* Colores del confeti */
+        .confetti:nth-child(1) {
+            background-color: #ff69b4;
+            animation-delay: 0.1s;
+        }
+        .confetti:nth-child(2) {
+            background-color: #65ffbb;
+            animation-delay: 0.2s;
+        }
+        .confetti:nth-child(3) {
+            background-color: #ff6f5c;
+            animation-delay: 0.3s;
+        }
+        .confetti:nth-child(4) {
+            background-color: #ffd700;
+            animation-delay: 0.4s;
+        }
+        .confetti:nth-child(5) {
+            background-color: #00ffff;
+            animation-delay: 0.5s;
+        }
+
+        /* Estilos adicionales para dispositivos móviles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Cambiado a dirección de columna para dispositivos móviles */
+                border-radius: 15px; /* Reducción del radio de borde para dispositivos móviles */
+            }
+            .text-container {
+                border-radius: 30px; /* Ajuste del radio de borde para dispositivos móviles */
+                padding: 20px; /* Espaciado */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://img.freepik.com/vector-gratis/letras-dia-madre-dibujadas-mano-espanol_23-2149346306.jpg" alt="Día de la Madre" class="image">
+        </div>
+        <div class="text-container">
+            <h1>¡Feliz Día de la Madre!</h1>
+            <p>En este día especial, queremos rendir homenaje a todas las madres y celebrar su amor incondicional, su fuerza y su dedicación. Son el corazón de nuestros hogares y merecen todo nuestro reconocimiento y cariño.</p>
+            <p>Gracias por ser nuestro apoyo constante, por enseñarnos, por inspirarnos y por ser un ejemplo de amor y sacrificio. Que este día esté lleno de alegría, amor y momentos inolvidables junto a quienes más te quieren.</p>
+            <p>¡Feliz Día de la Madre!</p>
+        </div>
+    </div>
+
+    <!-- Confeti -->
+    <script>
+        function createConfetti() {
+            const numConfettis = 100; // Número de confetis
+
+            // Obtener el contenedor para el confeti
+            const container = document.querySelector('body');
+
+            // Crear los confetis y agregarlos al contenedor
+            for (let i = 0; i < numConfettis; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`; // Establecer la posición horizontal
+                confetti.style.animationDelay = `${Math.random()}s`; // Retraso aleatorio para crear una apariencia más natural
+
+                // Agregar el confeti al contenedor
+                container.appendChild(confetti);
+            }
+        }
+        
+        // Llamar a la función para iniciar la lluvia de confetis
+        createConfetti();
+    </script>
+</body>
+</html>
